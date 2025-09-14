@@ -42,6 +42,9 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
+    implementation("androidx.compose.material3:material3:<tu-version>")
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    debugImplementation("androidx.compose.ui:ui-tooling:<tu-version-compose>")
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))

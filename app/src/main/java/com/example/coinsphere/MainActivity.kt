@@ -63,16 +63,16 @@ fun AppThemeCoinsphere(content: @Composable () -> Unit) {
 fun HomeScreen() {
     val top10 = remember {
         listOf(
-            Crypto(1, "Bitcoin",   "$109,797.37", cmcIcon(1)),
-            Crypto(2, "Ethereum",  "$4,321.21",   cmcIcon(1027)),
-            Crypto(3, "Tether",    "$1.0000",     cmcIcon(825)),
-            Crypto(4, "XRP",       "$2.8100",     cmcIcon(52)),
-            Crypto(5, "BNB",       "$845.0000",   cmcIcon(1839)),
-            Crypto(6, "Solana",    "$201.8500",   cmcIcon(5426)),
-            Crypto(7, "USDC",      "$0.9998",     cmcIcon(3408)),
-            Crypto(8, "Dogecoin",  "$0.1320",     cmcIcon(74)),
-            Crypto(9, "TRON",      "$0.3630",     cmcIcon(1958)),
-            Crypto(10,"Cardano",   "$0.5120",     cmcIcon(2010))
+            Crypto(1,  "Bitcoin",  "$109,797.37", cmcIcon(1)),
+            Crypto(2,  "Ethereum", "$4,321.21",   cmcIcon(1027)),
+            Crypto(3,  "Tether",   "$1.0000",     cmcIcon(825)),
+            Crypto(4,  "XRP",      "$2.8100",     cmcIcon(52)),
+            Crypto(5,  "BNB",      "$845.0000",   cmcIcon(1839)),
+            Crypto(6,  "Solana",   "$201.8500",   cmcIcon(5426)),
+            Crypto(7,  "USDC",     "$0.9998",     cmcIcon(3408)),
+            Crypto(8,  "Dogecoin", "$0.1320",     cmcIcon(74)),
+            Crypto(9,  "TRON",     "$0.3630",     cmcIcon(1958)),
+            Crypto(10, "Cardano",  "$0.5120",     cmcIcon(2010))
         )
     }
 
@@ -166,9 +166,14 @@ fun CryptoRow(c: Crypto) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text("${c.rank}", color = TextMain, modifier = Modifier.width(28.dp), fontWeight = FontWeight.SemiBold)
             AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current).data(c.iconUrl).crossfade(true).build(),
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(c.iconUrl)
+                    .crossfade(true)
+                    .build(),
                 contentDescription = c.name,
-                modifier = Modifier.size(28.dp).clip(CircleShape)
+                modifier = Modifier
+                    .size(28.dp)
+                    .clip(CircleShape)
             )
             Spacer(Modifier.width(12.dp))
             Text(
@@ -184,9 +189,9 @@ fun CryptoRow(c: Crypto) {
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true, showSystemUi = true, name = "CoinSphere - Preview")
 @Composable
-fun PreviewCommit3() {
+fun PreviewHomeScreen() {
     AppThemeCoinsphere {
         HomeScreen()
     }
