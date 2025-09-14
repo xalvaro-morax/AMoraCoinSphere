@@ -1,48 +1,67 @@
-
 package com.example.coinsphere
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.coinsphere.ui.theme.CoinSphereTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             CoinSphereTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                HomeScreen()
             }
         }
     }
 }
 
+
+val Background = Color(0xFF0B1020)
+val SurfaceColor = Color(0xFF151B2E)
+val TextMain = Color(0xFFE8ECF8)
+val TextDim = Color(0xFF9AA3B2)
+val AccentBlue = Color(0xFF2E7FFF)
+
+
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun CoinSphereTheme(content: @Composable () -> Unit) {
+    val darkColors = darkColorScheme(
+        primary = AccentBlue,
+        background = Background,
+        surface = SurfaceColor,
+        onBackground = TextMain,
+        onSurface = TextMain
+    )
+
+    MaterialTheme(
+        colorScheme = darkColors,
+        content = content,
+        typography = Typography()
     )
 }
 
+
+@Composable
+fun HomeScreen() {
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = Background
+    ) {
+        Text(text = "Cargando...", color = TextMain)
+    }
+}
+
+
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun HomeScreenPreview() {
     CoinSphereTheme {
-        Greeting("Android")
+        HomeScreen()
     }
 }
